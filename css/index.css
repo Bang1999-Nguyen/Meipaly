@@ -1,0 +1,551 @@
+/* GLOBAL */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    font-family: 'Oswald', sans-serif;
+    /* font-size:18px; */
+    /* 1rem = 18px */
+    /* 1rem = 16px: khi không khai báo font-size */
+    /* scroll-behavior: smooth; */
+}
+.title p:first-of-type{
+    color:#e62b4a;
+    font-size:14px;
+    font-weight: 300;
+
+}
+.title p:last-of-type{
+    color:gray;
+    font-size:16px;
+    margin-top:20px;
+}
+.title h2{
+    color:gray;
+    font-size:50px;
+    font-weight: 400;
+}
+.title{
+    text-align:center;
+}
+/* HEADER */
+header{
+    /* background-color:darkblue; */
+    padding: 26px 0;
+    position: absolute;
+    width:100%;
+    border-bottom:1px solid rgba(225, 225, 225, 0.8)
+    
+}
+.header__content{
+    width:70%;
+    margin:0 auto;
+    display: flex;
+    /* thêm khoảng cách cho các thẻ con */
+    justify-content:space-between;
+    /* căn chữ theo chiều dọc */
+    align-items: center;
+}
+.header__content a{
+    text-decoration: none;
+    font-size:20px;
+    color:white;
+    
+    
+
+}
+.header__content li{
+    display: inline;
+    padding:0 15px;
+}
+.header__content .active a{
+    color:brown;
+}
+.header__content li a:hover{
+    color:green;
+}
+.header__content .header__logo{
+    font-size: 2rem;
+    font-weight: bold;
+}
+.carousel{
+    height:650px;
+    background-image: url(../img/home_slider.jpg);
+    background-size:cover;
+    background-position: center;
+    /* nếu flex chỉ có 1 thẻ con trực tiếp thì dùng center (justify-content, align-items) giúp căn thẻ con ở giữa cả hai chiều */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.carousel__content{
+    text-align:center;
+    color:white;
+
+}
+.carousel__content button{
+    padding: 10px 20px;
+    font-size:20px;
+    color:white;
+    background-color:#e62b4a;
+    border: transparent;
+    cursor: pointer;
+    margin: 30px 0;
+    /* transition-property:background-color;
+    transition-duration: 4s;
+    transition-delay: 2s; */
+    transition:all 0.5s;
+
+}
+.carousel__content button:hover{
+    background-color: #af2239;
+}
+.carousel__content h1{
+    font-size:75px;
+    line-height: 95px;
+    
+}
+.carousel__arrow{
+    font-size: 2rem;
+    animation: downArrow 0.8s linear 0s infinite;
+    /* trong 1 chu kì có sự thay đổi tốc độ: timing-function */
+    /* số lân lập lại chu kì: interation-count */
+ 
+}
+/* khai báo một chu kì chuyển động */
+@keyframes downArrow{
+    /* 0% -> 100% */
+    /* from -> to */
+    from{
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to{
+        transform: translateY(50px);
+        opacity: 0;
+    }
+}
+/* @keyframes rotateArrow{
+    0%{
+        transform: translateY(0) rotate(0deg);
+    }
+    50%{
+        transform: translateY(25px)
+        rotate(90deg);
+    }
+    75%{
+        transform: translateY(35px)
+        rotate(180deg);
+    }
+    100%{
+        transform: translateY(50px)
+        rotate(360deg);
+    }
+} */
+.carousel__content p{
+    font-size:25px;
+    padding:30px 0;
+    
+}
+.service{
+    background-color:black;
+    height:700px;
+}
+.service{
+    padding:100px 0;
+   
+}
+.service__content{
+    width:80%;
+    margin: 0 auto;
+}
+.service__slider .item{
+    background-color:white;
+    width:240px;
+    height:230px;
+    /* margin: 10px; */
+    /* căn giữa nội dung bằng flex
+    khi có nhiều thẻ con */
+    display:flex!important;
+    justify-content:center;
+    align-items:center;
+    /* flex-direction: row; mặc định */
+    flex-direction: column;
+}
+.service__slider{
+    width:75%;
+    margin:0 auto;
+}
+/* dots */
+.service__slider .slick-initialized .slick-slide{
+    margin:8px;
+}
+.service__slider .slick-dots li button {
+    background-color:red;
+    border-radius:50%;
+    width:20px;
+    height:20px;
+}
+
+
+.service__slider .slick-dots li button:before{
+    color:red;
+}
+.service__slider .slick-dots li.slick-active button:before{
+    background-color:pink;
+    border-radius:50%;
+}
+.service__slider .slick-dots li.slick-active button:before{
+    color:pink;
+}
+/* chưa hover */
+.item::before{
+    content: '';
+    width:3px;
+    height:0;
+    background-color:red;
+    position: absolute;
+    right:0;
+    top:0;
+    /* bottom:0; */
+    transition: all 2s;
+}
+.item{
+    position: relative;
+}
+.item:hover::before{
+    height:100%;
+
+}
+/* SHOWCASE */
+.showcase{
+    padding:100px 0;
+}
+.showcase__content{
+    width:80%;
+    margin:0 auto;
+}
+.showcase__group{
+    text-align:center;
+}
+.showcase__group{
+    margin:40px 0;
+}
+.showcase__group button{
+    padding:10px 15px;
+    font-weight:400;
+    font-size:16px;
+    cursor:pointer;
+}
+.showcase__grid{
+    display:grid;
+    /* grid-template-columns: 33.33% ; */
+    /* grid-template-columns: repeat(3,33.33%); */
+    /* px, %, rem, fr */
+    /* fr: phân số */
+    /* repeat(3,1fr):kích thước mỗi cột là 1/3 */
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+}
+
+.showcase__item{
+    height:400px;
+    position: relative;
+    overflow: hidden;
+}
+.showcase__item img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:grayscale(100%) contrast(50%);
+}
+/* chưa hover */
+.showcase__overlay{
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    background-color: rgba(220, 20, 60, 0.6);
+    opacity: 0;
+    transition:all 0.5s;
+}
+/* đã hover */
+.showcase__item:hover .showcase__overlay{
+    opacity: 1;
+}
+.showcase__icon{
+    position: absolute;
+    top:20px;
+    right:40px;
+    color:black;
+    
+}
+.showcase__icon i{
+    font-size:15px;
+    color:black;
+}
+.showcase__icon a{
+    display:block;
+}
+.showcase__text{
+    position:absolute;
+    bottom:20px;
+    left:30px;
+}
+/* chưa hover */
+.showcase__icon i{
+    background-color:white;
+    height:40px;
+    text-align:center;
+    width:40px;
+    line-height:40px;
+    transform: translateY(50px);
+    transition: all 0.5s;
+    margin-bottom:10px;
+}
+/* đã hover */
+.showcase__item:hover .showcase__icon i{
+    transform: translateY(0);
+}
+.showcase__text{
+    transform: translateY(50px);
+    transition: all 0.5s;
+}
+.showcase__item:hover .showcase__text{
+    transform: translateY(0);
+    /* transform:rotateX(0) */
+    /* transform:skewX() */
+}
+.blog__content{
+    padding:50px 0;
+    display:grid;
+    grid-template-columns:
+    repeat(4,1fr) ;
+}
+.blog__item1{
+    /* line bắt đầu / line kết thúc  */
+    /* grid-column: 1 / 3; */
+    /* line bắt đầu / span số lượng cột */
+    grid-column: 1 / span 2;
+    grid-row: 1 / span 2;
+    
+    
+}
+.blog__item{
+    overflow:hidden;
+    position:relative;
+}
+.blog{
+    background-color:rgba(207, 212, 212, 0.2);
+}
+.blog__item10{
+    grid-column: 3 / span 2;
+   grid-row: 3 / span 2;
+}
+.blog__item img{
+    width:100%;
+    display:block;
+    height:100%;
+    /* object-fit: cover; */
+    transform:scale(1);
+    transition: all 0.6s;
+}
+.title{
+    padding:40px 0;
+}
+.blog__item:hover img{
+    transform:scale(1.3);
+    
+}
+/* .blog__item2 img{
+    transform:scale(1) rotate(0deg);
+
+}
+.blog__item2:hover img{
+    transform:scale(1.2) rotate(360deg);
+
+} */
+.number__content{
+    display: flex;
+    justify-content: space-around;
+    
+    width:85%;
+    margin:0 auto;
+    padding:100px 0
+}
+.number{
+    background-color:black;
+    height:400px;
+}
+.number__item p{
+    color:gray;
+    font-size:25px;
+    font-weight:300;
+    text-align:center;
+    
+
+}
+.number__item p:first-child{
+    font-size:60px;
+    color:white;
+}
+.number__item{
+    width:25%;
+    border-right:1px solid gray;
+
+}
+.number__item:last-child{
+    border:none;
+}
+.trusted__text button{
+    padding:20px 25px;
+    color:white;
+    background-color:black;
+    border:transparent;
+
+
+}
+.trusted__content{
+    width:75%;
+    margin:0 auto;
+    padding:80px 0;
+    display: flex;
+    /* căn thẻ con của flex bên phải */
+    justify-content: flex-end;
+    position: relative;
+}
+.trusted__img{
+    width:70%;
+    position: absolute;
+    top: -150px;
+    left: 0;
+
+}
+.trusted__img img{
+    width:100%;
+    height:100%;
+    filter:contrast(50%) grayscale(100%);
+    object-fit: cover;
+}
+.trusted__text{
+    width:70%;
+    background-color:white;
+    padding:100px;
+    /* z-index chỉ có tác dụng khi đi chung với position */
+    /* thẻ có index sẽ đè lên the có index nhỏ hơn */
+    position: relative;
+    z-index: 1;
+    line-height:40px;
+    
+}
+.trusted__text h2{
+    font-size:40px;
+    line-height:50px;
+    font-weight:400;
+}
+.trusted__text p{
+    padding:20px 0;
+    color:gray;
+}
+/* VIDEO */
+.video__content video{
+    width:100%;
+}
+.video__content{
+    width:75%;
+    margin:0 auto;
+}
+.videos{
+    background-image:url(../img/bussiness_img_1.jpg);
+    background-size:cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding:0 0 100px 0;
+}
+.contact__form button{
+    padding:10px 30px;
+    background-color:black;
+    border: transparent;
+    font-size:20px;
+    cursor: pointer;
+    color:white;
+    margin-top:20px;
+}
+.contact__content{
+    width:70%;
+    margin:0 auto;
+    display: flex;
+
+}
+.contact__map{
+    width:60%;
+}
+.contact__form{
+    width:40%;
+}
+.contact__form form{
+    display: flex;
+    flex-direction: column;
+    padding: 0 20px;
+}
+.contact__form input{
+    border:1px solid black;
+    font-size:15px;
+    /*  lem = 15px*/
+    padding: lem;
+    margin-bottom:25px;
+}
+.contact__map iframe{
+    width:100%;
+    padding:0 20px;
+}
+.blog__item{
+    position: relative;
+}
+.blog__overlay {
+    position: absolute;
+    top:0;
+    right:0;
+    background-color:rgba(10, 7, 7, 0.5);
+    height:100%;
+    width:100%;
+    opacity: 1;
+    transition: all 0.5s;
+    color:white;
+    text-align:center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding:50px;
+    
+}
+.blog__item:hover .blog__overlay{
+    opacity: 0;
+}
+/* backtotop */
+.backtotop{
+    height:60px;
+    width:60px;
+    color:white;
+    background-color:rgba(0, 0, 0, 0.25);
+    border-radius:4px;
+    line-height:60px;
+    text-align:center;
+    /* thẻ a là inline không xét được kich thước nên phải chuyên sang block */
+    display: block;
+    font-size:20px;
+    position: fixed;
+    right:20px;
+    top:20px;
+    visibility: hidden;
+    opacity: 0;
+}
+.cd-top--is-visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+
